@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AfriVista Navbar</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+ <style>
+        /* Essential custom styling for the specific "look" */
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
+                        url('/57c24e1cba10db6e2c27f580e8f895c4946b7918.jpg') center/cover no-repeat;
+            min-height: 100vh;
+        }
+
+        .custom-navbar {
+            background: rgba(107, 79, 53, 0.7); /* Translucent brown */
+            backdrop-filter: blur(10px);
+            border-radius: 0 0 50px 50px;
+        }
+
+        .btn-tawny {
+            background-color: #a67341;
+            color: white;
+            border-radius: 50px;
+            border: none;
+        }
+
+        .btn-tawny:hover {
+            background-color: #8b5e34;
+            color: white;
+        }
+        body { background-color: #e4d1c0; color: #6b4f35; font-family: serif; }
+        
+        .about-image-container { position: relative; }
+        
+        /* The overlapping effect */
+        .img-secondary {
+            position: absolute;
+            bottom: -15%;
+            right: -5%;
+            width: 80%;
+            border: 8px solid #e8d5c4; /* Creates the gap effect between images */
+        }
+        
+        .text-accent { color: #a67341; }
+        .packages-bg {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                    url('/158b434f5d5f79a6b4f1dcc3808d67d6e6f45961.jpg') center/cover no-repeat fixed;
+    }
+
+    /* This creates the blurry glass effect from your screenshot */
+    .glass-effect {
+        background-color: rgba(255, 255, 255, 0.1) !important;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+    }
+    /* Styling for the section background and text colors */
+    .destinations-section {
+        background-color: #e8d5c4;
+        color: #6b4f35;
+        font-family: serif;
+    }
+
+    /* Logic for Horizontal Scroll on Small Screens */
+    @media (max-width: 767px) {
+        .scroll-mobile {
+            display: flex !important;
+            flex-wrap: nowrap !important;
+            overflow-x: auto !important;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 20px; /* Space for scrollbar */
+        }
+        .scroll-mobile .col-card {
+            flex: 0 0 85%; /* Shows most of one card and a peek of the next */
+            max-width: 85%;
+        }
+    }
+
+    /* Custom button styling */
+    .btn-custom-pill {
+        border: 1px solid #6b4f35;
+        border-radius: 50px;
+        color: #6b4f35;
+        padding: 8px 25px;
+        text-decoration: none;
+        white-space: nowrap;
+    }
+    .btn-custom-pill.active {
+        background-color: #a67341;
+        color: white;
+        border-color: #a67341;
+    }
+
+    /* Card aesthetics */
+    .destination-card {
+        background-color: #f5ede4;
+        border-radius: 30px !important;
+        overflow: hidden;
+        border: none;
+    }
+    .destination-card img {
+        height: 200px;
+        object-fit: cover;
+    }
+    /* Section styling to match the rest of your project */
+    .gallery-section {
+        background-color: #e8d5c4;
+        padding-bottom: 80px;
+    }
+
+    .gallery-title {
+        color: #6b4f35;
+        font-family: serif;
+        font-size: 4rem;
+    }
+    .custom-footer {
+        background-color: #e8d5c4;
+        /* Using an overlay color + your map image */
+        background: linear-gradient(rgba(232, 213, 196, 0.85), rgba(232, 213, 196, 0.85)), 
+                    url('africa-map-outline.png') no-repeat center;
+        background-size: contain;
+        color: #6b4f35;
+        font-family: serif;
+    }
+
+    .footer-link {
+        color: #6b4f35;
+        text-decoration: none;
+        display: block;
+        margin-bottom: 8px;
+        font-size: 0.95rem;
+        transition: 0.3s;
+    }
+
+    .footer-link:hover {
+        color: #a67341;
+        padding-left: 5px;
+    }
+
+    .footer-title {
+        font-weight: bold;
+        margin-bottom: 20px;
+        font-size: 1.2rem;
+    }
+
+    /* Newsletter Input Group */
+    .newsletter-input {
+        background: transparent !important;
+        border: 1px solid #6b4f35 !important;
+        border-right: none !important;
+        border-radius: 15px 0 0 15px !important;
+        color: #6b4f35 !important;
+    }
+
+    .newsletter-input::placeholder {
+        color: rgba(107, 79, 53, 0.6);
+    }
+
+    .newsletter-btn {
+        background-color: #a67341 !important;
+        border: 1px solid #6b4f35 !important;
+        border-left: none !important;
+        color: white !important;
+        border-radius: 0 50px 50px 0 !important;
+        padding: 10px 25px !important;
+    }
+
+    .social-icons a {
+        color: #6b4f35;
+        font-size: 1.2rem;
+        margin-right: 15px;
+        transition: 0.3s;
+    }
+
+    .social-icons a:hover {
+        color: #a67341;
+    }
+    /* Section Background and Overlay */
+    .testimonials-bg {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                    url('/ee6e782b824ee2f4b9bd295db8a2d1581ac5eab1.jpg') center/cover no-repeat;
+        min-height: 60vh;
+        display: flex;
+        align-items: center;
+        color: white;
+        font-family: serif;
+    }
+
+    /* Circular Profile Image */
+    .profile-img {
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        border: 4px solid rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+    }
+
+    /* Star Rating Colors */
+    .text-gold {
+        color: #ffb400;
+    }
+
+    .testimonial-text {
+        font-size: clamp(1.2rem, 4vw, 2rem);
+        line-height: 1.4;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    .contact-section {
+        background-color: #e8d5c4;
+        color: #6b4f35;
+        font-family: serif;
+    }
+
+    /* Form Card Styling */
+    .contact-card {
+        background-color: #f5ede4 !important;
+        border: none !important;
+        border-radius: 30px !important;
+        padding: 40px;
+    }
+
+    .contact-input {
+        border-radius: 10px !important;
+        border: 1px solid #ced4da !important;
+        padding: 12px !important;
+        margin-bottom: 5px;
+    }
+
+    .contact-input::placeholder {
+        color: #6b4f35;
+        opacity: 0.6;
+    }
+
+    .btn-contact {
+        background-color: #a67341 !important;
+        color: white !important;
+        border-radius: 50px !important;
+        padding: 10px 30px !important;
+        border: none !important;
+    }
+
+    /* Overlapping Image Logic */
+    .contact-image-wrapper {
+        position: relative;
+        padding-bottom: 10%;
+    }
+
+    .img-main {
+        width: 85%;
+        border-radius: 25px;
+    }
+
+    .img-overlay {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 70%;
+        border-radius: 25px;
+        border: 8px solid #e8d5c4;
+    }
+
+    .privacy-link {
+        color: #a67341;
+        text-decoration: none;
+        font-size: 0.9rem;
+    }
+
+   
+    </style>
+</head>
+<div class="hero-section d-flex flex-column">
+        
+        <nav class="navbar navbar-expand-lg navbar-dark custom-navbar mt-0 px-4 py-3 mx-md-5 rounded-pill">
+            <div class="container-fluid">
+                <a class="navbar-brand fw-bold d-flex align-items-center" href="#">
+                    <span class="text-warning me-2">🌍</span> AfriVista
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item"><a class="nav-link px-3" href="#">About Us</a></li>
+                        <li class="nav-item"><a class="nav-link px-3" href="#">Tour Packages</a></li>
+                        <li class="nav-item"><a class="nav-link px-3" href="#">Destinations</a></li>
+                        <li class="nav-item"><a class="nav-link px-3" href="#">Gallery</a></li>
+                        <li class="nav-item"><a class="nav-link px-3" href="#">Testimonials</a></li>
+                    </ul>
+                    <a href="#" class="btn btn-outline-light rounded-pill px-4 py-2 border-opacity-50">Contact Us &rarr;</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container my-auto">
+            <div class="row">
+                <div class="col-lg-6 text-white p-4">
+                    <h5 class="fw-normal mb-1">Discover Africa</h5>
+                    <h1 class="display-3 fw-bold mb-4">The Heartbeat of the World</h1>
+                    <p class="lead mb-5" style="max-width: 500px; font-size: 1.1rem; line-height: 1.6;">
+                        From the golden dunes of the Sahara to the emerald peaks of the Drakensberg Mountains, 
+                        Africa is a continent that speaks to the soul. Explore ancient cities, vibrant traditions, 
+                        dramatic landscapes, and heartwarming hospitality across over 50 unique countries.
+                    </p>
+                    <a href="#" class="btn btn-tawny px-5 py-3 fw-bold">Contact Us &rarr;</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+<!-- HERO SECTION -->
+<section class="position-relative text-white">
+
+  <!-- Background Image -->
+  <img src="/57c24e1cba10db6e2c27f580e8f895c4946b7918.jpg"
+       class="w-100 vh-100 object-fit-cover" alt="Africa">
+
+  <!-- Overlay -->
+  <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-50"></div>
+
+  <!-- Content -->
+  <div class="position-absolute top-50 start-0 translate-middle-y container">
+    <div class="col-lg-6">
+      <p class="fw-semibold">Discover Africa</p>
+      <h1 class="display-4 fw-bold">
+        The Heartbeat of the World
+      </h1>
+      <p class="text-white-50">
+        From the golden dunes of the Sahara to the emerald peaks of the Drakensberg Mountains,
+        Africa is a continent that speaks to the soul. Explore ancient cities, vibrant traditions,
+        dramatic landscapes, and heartwarming hospitality.
+      </p>
+      <a href="#" class="btn btn-warning rounded-pill px-4 mt-3">
+        Contact Us →
+      </a>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ABOUT US SECTION -->
+<section class="py-5 m-5" style="background-color:#d8c3a5;">
+  <div class="container m-5">
+    <div class="row align-items-center">
+
+ 
+
+      <!-- Text -->
+      <div class="col-lg-6">
+        <h3 class="text-warning">About Us</h3>
+        <h4 class="fw-bold">
+          Explore the Heart of Africa With 🐘 AfriVista
+        </h4>
+        <p class="text-muted">
+          At AfriVista, we are passionate about showcasing the diverse beauty, culture,
+          and spirit of Africa. Our mission is to connect travelers with unforgettable
+          experiences across the continent — from the golden savannahs of Kenya to the
+          vibrant markets of Morocco, the serene beaches of Seychelles to the wildlife-rich
+          parks of South Africa.
+        </p>
+      </div>
+       <div class="col-lg-6 position-relative mb-5">
+
+  <!-- BACK IMAGE -->
+  <img 
+    src="/e8da5c0e1aa168e839920c08303cd10cff4ea40b.jpg"
+    class="img-fluid rounded-4 w-75"
+    alt="hiking">
+
+  <!-- FRONT IMAGE (OVERLAP LIKE DESIGN) -->
+  <img 
+    src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e"
+    class="img-fluid rounded-4 w-75 position-absolute top-100 start-50 translate-middle shadow-lg"
+    alt="beach">
+
+</div>
+
+    </div>
+  </div>
+</section>
+     <section class="packages-bg py-5">
+    <div class="container py-5 text-center text-white">
+        <h2 class="display-4 fw-normal mb-5">Tour Packages</h2>
+
+        <div class="row g-4 justify-content-center">
+            
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="glass-effect h-100 p-4 rounded-5 border border-white border-opacity-10 shadow-lg" >
+                    <div class=" bg-opacity-75 rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px ;background-color: #a86e38;">
+                        <span class="fs-4" ><img src="/emojione-monotone_tiger.png" alt=""></span>
+                    </div>
+                    <h4 class="fw-bold mb-3">Wildlife Safaris</h4>
+                    <p class="small opacity-75">Get up close with Africa's Big Five and experience nature in its purest form.</p>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="glass-effect h-100 p-4 rounded-5 border border-white border-opacity-10 shadow-lg">
+                    <div class="bg-opacity-75 rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px; background-color: #a86e38;">
+                        <span class="fs-4"><img src="/hugeicons_beach.png" alt=""></span>
+                    </div>
+                    <h4 class="fw-bold mb-3">Beach Getaways</h4>
+                    <p class="small opacity-75">Unwind on the white sands of the Indian Ocean.</p>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="glass-effect h-100 p-4 rounded-5 border border-white border-opacity-10 shadow-lg">
+                    <div class="bg-opacity-75 rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px; background-color: #a86e38;">
+                        <span class="fs-4"><img src="/teenyicons_globe-africa-outline.png" alt=""></span>
+                    </div>
+                    <h4 class="fw-bold mb-3">Heritage Trails</h4>
+                    <p class="small opacity-75">Trace African history from ancient civilizations to modern-day stories.</p>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="glass-effect h-100 p-4 rounded-5 border border-white border-opacity-10 shadow-lg">
+                    <div class="bg-opacity-75 rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px; background-color: #a86e38;">
+                        <span class="fs-4"><img src="/icon-park-outline_tour-bus.png" alt=""></span>
+                    </div>
+                    <h4 class="fw-bold mb-3">Custom Tours</h4>
+                    <p class="small opacity-75">Let us tailor a trip that fits your dream and your schedule.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+    <section class="destinations-section py-5">
+    <div class="container text-center">
+        <h2 class="display-5 mb-4">Popular Destinations</h2>
+
+        <div class="d-flex justify-content-start justify-content-md-center gap-2 mb-5 overflow-auto pb-2 flex-nowrap flex-md-wrap">
+            <a href="#" class="btn-custom-pill active">Ancient Wonders</a>
+            <a href="#" class="btn-custom-pill">Wildlife</a>
+            <a href="#" class="btn-custom-pill">Culture</a>
+            <a href="#" class="btn-custom-pill">Beach</a>
+        </div>
+
+        <div class="row g-4 scroll-mobile text-start">
+            
+            <div class="col-md-3 col-lg-3 col-card">
+                <div class="card destination-card h-100 shadow-sm">
+                    <img src="/6c86667e1c9242e470b7baac4d0e0d5186f5544d.jpg" class="card-img-top" alt="Egypt">
+                    <div class="card-body px-4">
+                        <h5 class="fw-bold mb-1">Egypt</h5>
+                        <p class="small text-muted mb-4">Pyramids of Giza & Luxor Temples</p>
+                        <a href="#" class="text-decoration-none text-brown fw-bold small" style="color: #86562a;" >Explore &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-lg-3 col-card">
+                <div class="card destination-card h-100 shadow-sm">
+                    <img src="/ef2ecadeac4924da3c7a85bea5b8be20087c4de2.jpg" class="card-img-top" alt="Nigeria">
+                    <div class="card-body px-4">
+                        <h5 class="fw-bold mb-1">Nigeria</h5>
+                        <p class="small text-muted mb-4">Benin Kingdom artifacts</p>
+                        <a href="#" class="text-decoration-none fw-bold small" style="color: #86562a;">Explore</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-lg-3 col-card">
+                <div class="card destination-card h-100 shadow-sm">
+                    <img src="/ad950cfc3a6c8f2ca2c879b95ea4773d9b5f95af.jpg" class="card-img-top" alt="Sudan">
+                    <div class="card-body px-4">
+                        <h5 class="fw-bold mb-1">Sudan</h5>
+                        <p class="small text-muted mb-4">Forgotten pyramids of Meroë</p>
+                        <a href="#" class="text-decoration-none fw-bold small" style="color: #86562a;" >Explore &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-lg-3 col-card">
+                <div class="card destination-card h-100 shadow-sm">
+                    <img src="/502a2890f5e4854e7fe70306af02048770825cc5.jpg" class="card-img-top" alt="Tunisia">
+                    <div class="card-body px-4">
+                        <h5 class="fw-bold mb-1">Tunisia</h5>
+                        <p class="small text-muted mb-4">Roman ruins in Carthage</p>
+                        <a href="#" class="text-decoration-none fw-bold small" style="color: #86562a;" >Explore &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+        <h2 class="display-4 mt-5">Gallery</h2>
+    </div>
+
+    there isbstill something here(the grid images) but it is not showing up in the screenshot, so i will ignore it for now, but if you want to see it, just let me know and i can show you the code for it
+</section>
+<section class="testimonials-bg py-5">
+    <div class="container text-center">
+        <h2 class="display-5 mb-5 fw-normal">Testimonials</h2>
+
+        <div class="mb-4">
+            <img src="/cc64ccb3d7f8ad752141ee21cc0d72c31a3fdcb0.png" alt="Client" class="profile-img shadow-lg">
+        </div>
+
+        <div class="px-3">
+            <p class="testimonial-text mb-4">
+                "A life-changing experience! From the Serengeti to the 
+                Maasai villages, everything was perfectly planned."
+            </p>
+        </div>
+
+        <div class="d-flex align-items-center justify-content-center gap-2">
+            <div class="fs-4 text-gold">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span class="text-white">★</span>
+            </div>
+            <span class="fw-bold">4.9</span>
+            <span class="text-gold">★</span>
+            <span class="opacity-75">Ratings</span>
+        </div>
+    </div>
+</section>
+<section class="contact-section py-5">
+    <div class="container py-lg-5">
+        <div class="row align-items-center g-5">
+            
+            <div class="col-lg-6 d-none d-lg-block"> ">
+                <div class="contact-image-wrapper">
+                    <img src="/e8da5c0e1aa168e839920c08303cd10cff4ea40b (1).jpg" class="img-main shadow" alt="Hikers">
+                    <img src="/40ccf81900de195ca48a20e61da80ea467bfd147.jpg" class="img-overlay shadow" alt="Beach Scene">
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="text-center text-lg-start mb-4">
+                    <h2 class="display-5">Contact Us</h2>
+                </div>
+
+                <div class="card contact-card shadow-sm">
+                    <form>
+                        <div class="row g-3">
+                            <div class="col-12 col-md-6">
+                                <label class="small fw-bold mb-1">First name</label>
+                                <input type="text" class="form-control contact-input" placeholder="enter first name">
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <label class="small fw-bold mb-1">Last name</label>
+                                <input type="text" class="form-control contact-input" placeholder="enter last name">
+                            </div>
+                            
+                            <div class="col-12">
+                                <label class="small fw-bold mb-1">email</label>
+                                <input type="email" class="form-control contact-input" placeholder="enter email address">
+                            </div>
+
+                            <div class="col-12">
+                                <label class="small fw-bold mb-1">Your Country</label>
+                                <input type="text" class="form-control contact-input" placeholder="enter your country">
+                            </div>
+
+                            <div class="col-12 d-flex justify-content-between align-items-center mt-4">
+                                <button type="submit" class="btn btn-contact">Contact Us &rarr;</button>
+                                <a href="#" class="privacy-link">Privacy Policy</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<footer class="custom-footer py-5 border-top border-dark border-opacity-10" style="background-color: #f8faf9;">
+    <div class="container py-4">
+        <div class="row g-4">
+            
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="d-flex align-items-center mb-3">
+                    <span class="text-warning me-2 fs-4">🌍</span>
+                    <h4 class="fw-bold mb-0">AfriVista</h4>
+                </div>
+                <p class="small mb-4 opacity-75">Your Gateway to Authentic African Adventures.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="bi bi-facebook"></i></a>
+                    <a href="#"><i class="bi bi-whatsapp"></i></a>
+                    <a href="#"><i class="bi bi-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-6 col-lg-2">
+                <h5 class="footer-title">Quick Links</h5>
+                <a href="#" class="footer-link">Home</a>
+                <a href="#" class="footer-link">About Us</a>
+                <a href="#" class="footer-link">Destinations</a>
+                <a href="#" class="footer-link">Tour Packages</a>
+                <a href="#" class="footer-link">Gallery</a>
+                <a href="#" class="footer-link">Testimonials</a>
+                <a href="#" class="footer-link">Contact Us</a>
+            </div>
+
+            <div class="col-6 col-md-6 col-lg-2">
+                <h5 class="footer-title">Top Destinations</h5>
+                <a href="#" class="footer-link">Nigeria</a>
+                <a href="#" class="footer-link">Kenya</a>
+                <a href="#" class="footer-link">Egypt</a>
+                <a href="#" class="footer-link">South Africa</a>
+                <a href="#" class="footer-link">Morocco</a>
+                <a href="#" class="footer-link">Rwanda</a>
+                <a href="#" class="footer-link">Zanzibar</a>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-2">
+                <h5 class="footer-title">Legal & Support</h5>
+                <a href="#" class="footer-link">Terms of Service</a>
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Refund Policy</a>
+                <a href="#" class="footer-link">FAQ's</a>
+            </div>
+
+            <div class="col-12 col-lg-3">
+                <h5 class="footer-title">Sign Up For Our Newsletter</h5>
+                <p class="small mb-3">Email Addresses</p>
+                <div class="input-group">
+                    <input type="email" class="form-control newsletter-input shadow-none" placeholder="Enter Email Addresses">
+                    <button class="btn newsletter-btn" type="button">
+                        <span class="fs-5">&rarr;</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+   
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
