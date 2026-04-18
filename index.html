@@ -1,20 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AfriVista Navbar</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
- <style>
-        /* Essential custom styling for the specific "look" */
-        .hero-section {
-            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
-                        url('/57c24e1cba10db6e2c27f580e8f895c4946b7918.jpg') center/cover no-repeat;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AfriVista Navbar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .gallery {
+            display: grid;
+            grid-template-columns: 1.39fr 1fr 0.95fr 1.25fr 0.87fr 0.87fr;
+            grid-template-rows: auto auto auto auto;
+            gap: clamp(8px, 2vw, 12px);
+            width: 100%;
+            max-width: 1380px;
+            margin: 0 auto;
+            aspect-ratio: auto;
+        }
+
+        .tile {
+            border-radius: clamp(12px, 2vw, 16px);
+            overflow: hidden;
+            position: relative;
+            aspect-ratio: auto;
+            min-height: clamp(140px, 25vw, 210px);
+        }
+
+        .tile img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.35s ease;
+        }
+
+        .tile:hover img {
+            transform: scale(1.04);
+        }
+
+        /* Victoria Falls: col1, rows 1-2 */
+        .t-victoria {
+            grid-column: 1;
+            grid-row: 1/3;
+        }
+
+        /* Giraffe: col2, rows 1-2 */
+        .t-giraffe {
+            grid-column: 2;
+            grid-row: 1/3;
+        }
+
+        /* Ruins placeholder col — top & bottom */
+        .t-ruins-t {
+            grid-column: 3;
+            grid-row: 1/3;
+            border-radius: clamp(12px, 2vw, 16px);
+        }
+
+        /* Zuma Rock: col4, all 4 rows */
+        .t-rock {
+            grid-column: 4;
+            grid-row: 1/5;
+            border-radius: clamp(12px, 2vw, 16px);
+        }
+
+        /* Top-right 4 small tiles */
+        .t-meroe {
+            grid-column: 5;
+            grid-row: 1;
+        }
+
+        .t-resort {
+            grid-column: 6;
+            grid-row: 1;
+        }
+
+        .t-culture {
+            grid-column: 5;
+            grid-row: 2;
+        }
+
+        .t-chefch {
+            grid-column: 6;
+            grid-row: 2;
+        }
+
+        /* Bottom-left: Sphinx col1 rows3-4 */
+        .t-sphinx {
+            grid-column: 1;
+            grid-row: 3/5;
+        }
+
+        /* Col2 bottom */
+        .t-waterfall {
+            grid-column: 2;
+            grid-row: 3;
+        }
+
+        .t-elephant {
+            grid-column: 2;
+            grid-row: 4;
+        }
+
+        /* Col3 bottom */
+        .t-ruins-b1 {
+            grid-column: 3;
+            grid-row: 3;
+        }
+
+        .t-ruins-b2 {
+            grid-column: 3;
+            grid-row: 4;
+        }
+
+        /* Zebra: col5-6, rows 3-4 */
+        .t-zebra {
+            grid-column: 5/7;
+            grid-row: 3/5;
+        }
+
+        .overlay-50 {
+            position: absolute;
+            bottom: clamp(12px, 3vw, 18px);
+            right: clamp(14px, 3vw, 22px);
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 2px 14px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 1200px) {
+            .gallery {
+                gap: clamp(7px, 2vw, 10px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: clamp(12px, 3vw, 16px);
+            }
+
+            .tile {
+                min-height: clamp(120px, 30vw, 180px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery {
+                grid-template-columns: 1.39fr 1fr 0.95fr 1.25fr 0.87fr 0.87fr;
+                gap: clamp(6px, 1.5vw, 8px);
+            }
+
+            body {
+                padding: clamp(8px, 2vw, 12px);
+            }
+
+            .tile {
+                min-height: clamp(100px, 25vw, 150px);
+            }
+        }
+
+ .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+                url('/57c24e1cba10db6e2c27f580e8f895c4946b7918.jpg') center/cover no-repeat;
             min-height: 100vh;
         }
 
         .custom-navbar {
-            background: rgba(107, 79, 53, 0.7); /* Translucent brown */
+            background: rgba(107, 79, 53, 0.7);
+            /* Translucent brown */
             backdrop-filter: blur(10px);
             border-radius: 0 0 50px 50px;
         }
@@ -30,348 +186,368 @@
             background-color: #8b5e34;
             color: white;
         }
-        body { background-color: #e4d1c0; color: #6b4f35; font-family: serif; }
-        
-        .about-image-container { position: relative; }
-        
+
+        body {
+            background-color: #e4d1c0;
+            color: #6b4f35;
+            font-family: serif;
+        }
+
+        .about-image-container {
+            position: relative;
+        }
+
         /* The overlapping effect */
         .img-secondary {
             position: absolute;
             bottom: -15%;
             right: -5%;
             width: 80%;
-            border: 8px solid #e8d5c4; /* Creates the gap effect between images */
+            border: 8px solid #e8d5c4;
+            /* Creates the gap effect between images */
         }
-        
-        .text-accent { color: #a67341; }
+
+        .text-accent {
+            color: #a67341;
+        }
+
         .packages-bg {
-        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-                    url('/158b434f5d5f79a6b4f1dcc3808d67d6e6f45961.jpg') center/cover no-repeat fixed;
-    }
-
-    /* This creates the blurry glass effect from your screenshot */
-    .glass-effect {
-        background-color: rgba(255, 255, 255, 0.1) !important;
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-    }
-    /* Styling for the section background and text colors */
-    .destinations-section {
-        background-color: #e8d5c4;
-        color: #6b4f35;
-        font-family: serif;
-    }
-
-    /* Logic for Horizontal Scroll on Small Screens */
-    @media (max-width: 767px) {
-        .scroll-mobile {
-            display: flex !important;
-            flex-wrap: nowrap !important;
-            overflow-x: auto !important;
-            -webkit-overflow-scrolling: touch;
-            padding-bottom: 20px; /* Space for scrollbar */
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('/158b434f5d5f79a6b4f1dcc3808d67d6e6f45961.jpg') center/cover no-repeat fixed;
         }
-        .scroll-mobile .col-card {
-            flex: 0 0 85%; /* Shows most of one card and a peek of the next */
-            max-width: 85%;
+
+        /* This creates the blurry glass effect from your screenshot */
+        .glass-effect {
+            background-color: rgba(255, 255, 255, 0.1) !important;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
-    }
 
-    /* Custom button styling */
-    .btn-custom-pill {
-        border: 1px solid #6b4f35;
-        border-radius: 50px;
-        color: #6b4f35;
-        padding: 8px 25px;
-        text-decoration: none;
-        white-space: nowrap;
-    }
-    .btn-custom-pill.active {
-        background-color: #a67341;
-        color: white;
-        border-color: #a67341;
-    }
+        /* Styling for the section background and text colors */
+        .destinations-section {
+            background-color: #e8d5c4;
+            color: #6b4f35;
+            font-family: serif;
+        }
 
-    /* Card aesthetics */
-    .destination-card {
-        background-color: #f5ede4;
-        border-radius: 30px !important;
-        overflow: hidden;
-        border: none;
-    }
-    .destination-card img {
-        height: 200px;
-        object-fit: cover;
-    }
-    /* Section styling to match the rest of your project */
-    .gallery-section {
-        background-color: #e8d5c4;
-        padding-bottom: 80px;
-    }
+        /* Logic for Horizontal Scroll on Small Screens */
+        @media (max-width: 767px) {
+            .scroll-mobile {
+                display: flex !important;
+                flex-wrap: nowrap !important;
+                overflow-x: auto !important;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 20px;
+                /* Space for scrollbar */
+            }
 
-    .gallery-title {
-        color: #6b4f35;
-        font-family: serif;
-        font-size: 4rem;
-    }
-    .custom-footer {
-        background-color: #e8d5c4;
-        /* Using an overlay color + your map image */
-        background: linear-gradient(rgba(232, 213, 196, 0.85), rgba(232, 213, 196, 0.85)), 
-                    url('africa-map-outline.png') no-repeat center;
-        background-size: contain;
-        color: #6b4f35;
-        font-family: serif;
-    }
+            .scroll-mobile .col-card {
+                flex: 0 0 85%;
+                /* Shows most of one card and a peek of the next */
+                max-width: 85%;
+            }
+        }
 
-    .footer-link {
-        color: #6b4f35;
-        text-decoration: none;
-        display: block;
-        margin-bottom: 8px;
-        font-size: 0.95rem;
-        transition: 0.3s;
-    }
+        /* Custom button styling */
+        .btn-custom-pill {
+            border: 1px solid #6b4f35;
+            border-radius: 50px;
+            color: #6b4f35;
+            padding: 8px 25px;
+            text-decoration: none;
+            white-space: nowrap;
+        }
 
-    .footer-link:hover {
-        color: #a67341;
-        padding-left: 5px;
-    }
+        .btn-custom-pill.active {
+            background-color: #a67341;
+            color: white;
+            border-color: #a67341;
+        }
 
-    .footer-title {
-        font-weight: bold;
-        margin-bottom: 20px;
-        font-size: 1.2rem;
-    }
+        /* Card aesthetics */
+        .destination-card {
+            background-color: #f5ede4;
+            border-radius: 30px !important;
+            overflow: hidden;
+            border: none;
+        }
 
-    /* Newsletter Input Group */
-    .newsletter-input {
-        background: transparent !important;
-        border: 1px solid #6b4f35 !important;
-        border-right: none !important;
-        border-radius: 15px 0 0 15px !important;
-        color: #6b4f35 !important;
-    }
+        .destination-card img {
+            height: 200px;
+            object-fit: cover;
+        }
 
-    .newsletter-input::placeholder {
-        color: rgba(107, 79, 53, 0.6);
-    }
+        /* Section styling to match the rest of your project */
+        .gallery-section {
+            background-color: #e8d5c4;
+            padding-bottom: 80px;
+        }
 
-    .newsletter-btn {
-        background-color: #a67341 !important;
-        border: 1px solid #6b4f35 !important;
-        border-left: none !important;
-        color: white !important;
-        border-radius: 0 50px 50px 0 !important;
-        padding: 10px 25px !important;
-    }
+        .gallery-title {
+            color: #6b4f35;
+            font-family: serif;
+            font-size: 4rem;
+        }
 
-    .social-icons a {
-        color: #6b4f35;
-        font-size: 1.2rem;
-        margin-right: 15px;
-        transition: 0.3s;
-    }
+        .custom-footer {
+            background-color: #e8d5c4;
+            /* Using an overlay color + your map image */
+            background: linear-gradient(rgba(232, 213, 196, 0.85), rgba(232, 213, 196, 0.85)),
+                url('africa-map-outline.png') no-repeat center;
+            background-size: contain;
+            color: #6b4f35;
+            font-family: serif;
+        }
 
-    .social-icons a:hover {
-        color: #a67341;
-    }
-    /* Section Background and Overlay */
-    .testimonials-bg {
-        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-                    url('/ee6e782b824ee2f4b9bd295db8a2d1581ac5eab1.jpg') center/cover no-repeat;
-        min-height: 60vh;
-        display: flex;
-        align-items: center;
-        color: white;
-        font-family: serif;
-    }
+        .footer-link {
+            color: #6b4f35;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            transition: 0.3s;
+        }
 
-    /* Circular Profile Image */
-    .profile-img {
-        width: 120px;
-        height: 120px;
-        object-fit: cover;
-        border: 4px solid rgba(255, 255, 255, 0.2);
-        border-radius: 50%;
-    }
+        .footer-link:hover {
+            color: #a67341;
+            padding-left: 5px;
+        }
 
-    /* Star Rating Colors */
-    .text-gold {
-        color: #ffb400;
-    }
+        .footer-title {
+            font-weight: bold;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
 
-    .testimonial-text {
-        font-size: clamp(1.2rem, 4vw, 2rem);
-        line-height: 1.4;
-        max-width: 800px;
-        margin: 0 auto;
-    }
-    .contact-section {
-        background-color: #e8d5c4;
-        color: #6b4f35;
-        font-family: serif;
-    }
+        /* Newsletter Input Group */
+        .newsletter-input {
+            background: transparent !important;
+            border: 1px solid #6b4f35 !important;
+            border-right: none !important;
+            border-radius: 15px 0 0 15px !important;
+            color: #6b4f35 !important;
+        }
 
-    /* Form Card Styling */
-    .contact-card {
-        background-color: #f5ede4 !important;
-        border: none !important;
-        border-radius: 30px !important;
-        padding: 40px;
-    }
+        .newsletter-input::placeholder {
+            color: rgba(107, 79, 53, 0.6);
+        }
 
-    .contact-input {
-        border-radius: 10px !important;
-        border: 1px solid #ced4da !important;
-        padding: 12px !important;
-        margin-bottom: 5px;
-    }
+        .newsletter-btn {
+            background-color: #a67341 !important;
+            border: 1px solid #6b4f35 !important;
+            border-left: none !important;
+            color: white !important;
+            border-radius: 0 50px 50px 0 !important;
+            padding: 10px 25px !important;
+        }
 
-    .contact-input::placeholder {
-        color: #6b4f35;
-        opacity: 0.6;
-    }
+        .social-icons a {
+            color: #6b4f35;
+            font-size: 1.2rem;
+            margin-right: 15px;
+            transition: 0.3s;
+        }
 
-    .btn-contact {
-        background-color: #a67341 !important;
-        color: white !important;
-        border-radius: 50px !important;
-        padding: 10px 30px !important;
-        border: none !important;
-    }
+        .social-icons a:hover {
+            color: #a67341;
+        }
 
-    /* Overlapping Image Logic */
-    .contact-image-wrapper {
-        position: relative;
-        padding-bottom: 10%;
-    }
+        /* Section Background and Overlay */
+        .testimonials-bg {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('/ee6e782b824ee2f4b9bd295db8a2d1581ac5eab1.jpg') center/cover no-repeat;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            font-family: serif;
+        }
 
-    .img-main {
-        width: 85%;
-        border-radius: 25px;
-    }
+        /* Circular Profile Image */
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+        }
 
-    .img-overlay {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        width: 70%;
-        border-radius: 25px;
-        border: 8px solid #e8d5c4;
-    }
+        /* Star Rating Colors */
+        .text-gold {
+            color: #ffb400;
+        }
 
-    .privacy-link {
-        color: #a67341;
-        text-decoration: none;
-        font-size: 0.9rem;
-    }
+        .testimonial-text {
+            font-size: clamp(1.2rem, 4vw, 2rem);
+            line-height: 1.4;
+            max-width: 800px;
+            margin: 0 auto;
+        }
 
-   
+        .contact-section {
+            background-color: #e8d5c4;
+            color: #6b4f35;
+            font-family: serif;
+        }
+
+        /* Form Card Styling */
+        .contact-card {
+            background-color: #f5ede4 !important;
+            border: none !important;
+            border-radius: 30px !important;
+            padding: 40px;
+        }
+
+        .contact-input {
+            border-radius: 10px !important;
+            border: 1px solid #ced4da !important;
+            padding: 12px !important;
+            margin-bottom: 5px;
+        }
+
+        .contact-input::placeholder {
+            color: #6b4f35;
+            opacity: 0.6;
+        }
+
+        .btn-contact {
+            background-color: #a67341 !important;
+            color: white !important;
+            border-radius: 50px !important;
+            padding: 10px 30px !important;
+            border: none !important;
+        }
+
+        /* Overlapping Image Logic */
+        .contact-image-wrapper {
+            position: relative;
+            padding-bottom: 10%;
+        }
+
+        .img-main {
+            width: 85%;
+            border-radius: 25px;
+        }
+
+        .img-overlay {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 70%;
+            border-radius: 25px;
+            border: 8px solid #e8d5c4;
+        }
+
+        .privacy-link {
+            color: #a67341;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <div class="hero-section d-flex flex-column">
-        
-        <nav class="navbar navbar-expand-lg navbar-dark custom-navbar mt-0 px-4 py-3 mx-md-5 rounded-pill">
-            <div class="container-fluid">
-                <a class="navbar-brand fw-bold d-flex align-items-center" href="#">
-                    <span class="text-warning me-2"><img src="/d5cd34d356ab71c8ddfca2f66112da9a68bf2428.png" alt="" style="height: 30px; width: 50px;"></span> AfriVista
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav mx-auto">
-                        <li class="nav-item"><a class="nav-link px-3" href="#">About Us</a></li>
-                        <li class="nav-item"><a class="nav-link px-3" href="#">Tour Packages</a></li>
-                        <li class="nav-item"><a class="nav-link px-3" href="#">Destinations</a></li>
-                        <li class="nav-item"><a class="nav-link px-3" href="#">Gallery</a></li>
-                        <li class="nav-item"><a class="nav-link px-3" href="#">Testimonials</a></li>
-                    </ul>
-                    <a href="#" class="btn btn-outline-light rounded-pill px-4 py-2 border-opacity-50">Contact Us &rarr;</a>
-                </div>
-            </div>
-        </nav>
 
-        <div class="container my-auto">
-            <div class="row">
-                <div class="col-lg-6 text-white p-4">
-                    <h5 class="fw-normal mb-1">Discover Africa</h5>
-                    <h1 class="display-3 fw-bold mb-4">The Heartbeat of the World</h1>
-                    <p class="lead mb-5" style="max-width: 500px; font-size: 1.1rem; line-height: 1.6;">
-                        From the golden dunes of the Sahara to the emerald peaks of the Drakensberg Mountains, 
-                        Africa is a continent that speaks to the soul. Explore ancient cities, vibrant traditions, 
-                        dramatic landscapes, and heartwarming hospitality across over 50 unique countries.
-                    </p>
-                    <a href="#" class="btn btn-tawny px-5 py-3 fw-bold">Contact Us &rarr;</a>
-                </div>
+    <nav class="navbar navbar-expand-lg navbar-dark custom-navbar mt-0 px-4 py-3 mx-md-5 rounded-pill">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="#">
+                <span class="text-warning me-2"><img src="/d5cd34d356ab71c8ddfca2f66112da9a68bf2428.png" alt=""
+                        style="height: 30px; width: 50px;"></span> AfriVista
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link px-3" href="#">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="#">Tour Packages</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="#">Destinations</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="#">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="#">Testimonials</a></li>
+                </ul>
+                <a href="#" class="btn btn-outline-light rounded-pill px-4 py-2 border-opacity-50">Contact Us &rarr;</a>
             </div>
         </div>
+    </nav>
 
+    <div class="container my-auto">
+        <div class="row">
+            <div class="col-lg-6 text-white p-4">
+                <h5 class="fw-normal mb-1">Discover Africa</h5>
+                <h1 class="display-3 fw-bold mb-4">The Heartbeat of the World</h1>
+                <p class="lead mb-5" style="max-width: 500px; font-size: 1.1rem; line-height: 1.6;">
+                    From the golden dunes of the Sahara to the emerald peaks of the Drakensberg Mountains,
+                    Africa is a continent that speaks to the soul. Explore ancient cities, vibrant traditions,
+                    dramatic landscapes, and heartwarming hospitality across over 50 unique countries.
+                </p>
+                <a href="#" class="btn btn-tawny px-5 py-3 fw-bold">Contact Us &rarr;</a>
+            </div>
+        </div>
     </div>
+
+</div>
 <!-- HERO SECTION -->
 
 
 
 <!-- ABOUT US SECTION -->
 <section class="py-5 m-5" style="background-color:#d8c3a5;">
-  <div class="container m-5">
-    <div class="row align-items-center">
+    <div class="container m-5">
+        <div class="row align-items-center">
 
- 
 
-      <!-- Text -->
-      <div class="col-lg-6">
-        <h3 class="text-warning">About Us</h3>
-        <h4 class="fw-bold">
-          Explore the Heart of Africa With 🐘 AfriVista
-        </h4>
-        <p class="text-muted">
-          At AfriVista, we are passionate about showcasing the diverse beauty, culture,
-          and spirit of Africa. Our mission is to connect travelers with unforgettable
-          experiences across the continent — from the golden savannahs of Kenya to the
-          vibrant markets of Morocco, the serene beaches of Seychelles to the wildlife-rich
-          parks of South Africa.
-        </p>
-      </div>
-       <div class="col-lg-6 position-relative mb-5">
 
-  <!-- BACK IMAGE -->
-  <img 
-    src="/e8da5c0e1aa168e839920c08303cd10cff4ea40b.jpg"
-    class="img-fluid rounded-4 w-75"
-    alt="hiking">
+            <!-- Text -->
+            <div class="col-lg-6">
+                <h3 class="fw-bold" style="color: #8b5e34;">About Us</h3>
+                <h4 class="fw-bold">
+                    Explore the Heart of Africa With <img src="/d5cd34d356ab71c8ddfca2f66112da9a68bf2428.png" alt=""
+                        style="height: 30px; width: 50px;"> <span style="color: #8b5e34;"> AfriVista</span>
+                </h4>
+                <p class="text-muted">
+                    At AfriVista, we are passionate about showcasing the diverse beauty, culture,
+                    and spirit of Africa. Our mission is to connect travelers with unforgettable
+                    experiences across the continent — from the golden savannahs of Kenya to the
+                    vibrant markets of Morocco, the serene beaches of Seychelles to the wildlife-rich
+                    parks of South Africa.
+                </p>
+            </div>
+            <div class="col-lg-6 position-relative mb-5">
 
-  <!-- FRONT IMAGE (OVERLAP LIKE DESIGN) -->
-  <img 
-    src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e"
-    class="img-fluid rounded-4 w-75 position-absolute top-100 start-50 translate-middle shadow-lg"
-    alt="beach">
+                <!-- BACK IMAGE -->
+                <img src="/e8da5c0e1aa168e839920c08303cd10cff4ea40b.jpg" class="img-fluid rounded-4 w-75" alt="hiking">
 
-</div>
+                <!-- FRONT IMAGE (OVERLAP LIKE DESIGN) -->
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e"
+                    class="img-fluid rounded-4 w-75 position-absolute top-100 start-50 translate-middle  p-5"
+                    alt="beach">
 
+            </div>
+
+        </div>
     </div>
-  </div>
 </section>
-     <section class="packages-bg py-5">
+<section class="packages-bg py-5">
     <div class="container py-5 text-center text-white">
         <h2 class="display-4 fw-normal mb-5">Tour Packages</h2>
 
         <div class="row g-4 justify-content-center">
-            
+
             <div class="col-12 col-md-6 col-lg-3">
-                <div class="glass-effect h-100 p-4 rounded-5 border border-white border-opacity-10 shadow-lg" >
-                    <div class=" bg-opacity-75 rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px ;background-color: #a86e38;">
-                        <span class="fs-4" ><img src="/emojione-monotone_tiger.png" alt=""></span>
+                <div class="glass-effect h-100 p-4 rounded-5 border border-white border-opacity-10 shadow-lg">
+                    <div class=" bg-opacity-75 rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3"
+                        style="width: 60px; height: 60px ;background-color: #a86e38;">
+                        <span class="fs-4"><img src="/emojione-monotone_tiger.png" alt=""></span>
                     </div>
                     <h4 class="fw-bold mb-3">Wildlife Safaris</h4>
-                    <p class="small opacity-75">Get up close with Africa's Big Five and experience nature in its purest form.</p>
+                    <p class="small opacity-75">Get up close with Africa's Big Five and experience nature in its purest
+                        form.</p>
                 </div>
             </div>
 
             <div class="col-12 col-md-6 col-lg-3">
                 <div class="glass-effect h-100 p-4 rounded-5 border border-white border-opacity-10 shadow-lg">
-                    <div class="bg-opacity-75 rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px; background-color: #a86e38;">
+                    <div class="bg-opacity-75 rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3"
+                        style="width: 60px; height: 60px; background-color: #a86e38;">
                         <span class="fs-4"><img src="/hugeicons_beach.png" alt=""></span>
                     </div>
                     <h4 class="fw-bold mb-3">Beach Getaways</h4>
@@ -381,17 +557,20 @@
 
             <div class="col-12 col-md-6 col-lg-3">
                 <div class="glass-effect h-100 p-4 rounded-5 border border-white border-opacity-10 shadow-lg">
-                    <div class="bg-opacity-75 rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px; background-color: #a86e38;">
+                    <div class="bg-opacity-75 rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3"
+                        style="width: 60px; height: 60px; background-color: #a86e38;">
                         <span class="fs-4"><img src="/teenyicons_globe-africa-outline.png" alt=""></span>
                     </div>
                     <h4 class="fw-bold mb-3">Heritage Trails</h4>
-                    <p class="small opacity-75">Trace African history from ancient civilizations to modern-day stories.</p>
+                    <p class="small opacity-75">Trace African history from ancient civilizations to modern-day stories.
+                    </p>
                 </div>
             </div>
 
             <div class="col-12 col-md-6 col-lg-3">
                 <div class="glass-effect h-100 p-4 rounded-5 border border-white border-opacity-10 shadow-lg">
-                    <div class="bg-opacity-75 rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px; background-color: #a86e38;">
+                    <div class="bg-opacity-75 rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3"
+                        style="width: 60px; height: 60px; background-color: #a86e38;">
                         <span class="fs-4"><img src="/icon-park-outline_tour-bus.png" alt=""></span>
                     </div>
                     <h4 class="fw-bold mb-3">Custom Tours</h4>
@@ -404,11 +583,12 @@
 </section>
 
 
-    <section class="destinations-section py-5">
+<section class="destinations-section py-5">
     <div class="container text-center">
         <h2 class="display-5 mb-4">Popular Destinations</h2>
 
-        <div class="d-flex justify-content-start justify-content-md-center gap-2 mb-5 overflow-auto pb-2 flex-nowrap flex-md-wrap">
+        <div
+            class="d-flex justify-content-start justify-content-md-center gap-2 mb-5 overflow-auto pb-2 flex-nowrap flex-md-wrap">
             <a href="#" class="btn-custom-pill active">Ancient Wonders</a>
             <a href="#" class="btn-custom-pill">Wildlife</a>
             <a href="#" class="btn-custom-pill">Culture</a>
@@ -416,14 +596,15 @@
         </div>
 
         <div class="row g-4 scroll-mobile text-start">
-            
+
             <div class="col-md-3 col-lg-3 col-card">
                 <div class="card destination-card h-100 shadow-sm">
                     <img src="/6c86667e1c9242e470b7baac4d0e0d5186f5544d.jpg" class="card-img-top" alt="Egypt">
                     <div class="card-body px-4">
                         <h5 class="fw-bold mb-1">Egypt</h5>
                         <p class="small text-muted mb-4">Pyramids of Giza & Luxor Temples</p>
-                        <a href="#" class="text-decoration-none text-brown fw-bold small" style="color: #86562a;" >Explore &rarr;</a>
+                        <a href="#" class="text-decoration-none text-brown fw-bold small"
+                            style="color: #86562a;">Explore &rarr;</a>
                     </div>
                 </div>
             </div>
@@ -445,7 +626,8 @@
                     <div class="card-body px-4">
                         <h5 class="fw-bold mb-1">Sudan</h5>
                         <p class="small text-muted mb-4">Forgotten pyramids of Meroë</p>
-                        <a href="#" class="text-decoration-none fw-bold small" style="color: #86562a;" >Explore &rarr;</a>
+                        <a href="#" class="text-decoration-none fw-bold small" style="color: #86562a;">Explore
+                            &rarr;</a>
                     </div>
                 </div>
             </div>
@@ -456,17 +638,88 @@
                     <div class="card-body px-4">
                         <h5 class="fw-bold mb-1">Tunisia</h5>
                         <p class="small text-muted mb-4">Roman ruins in Carthage</p>
-                        <a href="#" class="text-decoration-none fw-bold small" style="color: #86562a;" >Explore &rarr;</a>
+                        <a href="#" class="text-decoration-none fw-bold small" style="color: #86562a;">Explore
+                            &rarr;</a>
                     </div>
                 </div>
             </div>
 
         </div>
-        
+
         <h2 class="display-4 mt-5">Gallery</h2>
+        <div class="gallery">
+
+           
+            <div class="tile t-giraffe">
+                <img src="bridge.jpg" alt="Giraffes savanna" />
+            </div>
+
+            
+            <div class="tile t-ruins-t">
+                <img src="/zebra.jpg"
+                  />
+            </div>
+
+         
+            <div class="tile t-rock">
+                <img src="/bigrock.jpg"
+                   />
+            </div>
+
+           
+            <div class="tile t-meroe">
+                <img src="/pentagon.jpg"
+                   />
+            </div>
+            <div class="tile t-resort">
+                <img src="/obudu cattle range.jpg"
+                    alt="Green hills resort Africa" />
+            </div>
+
+           
+            <div class="tile t-culture">
+                <img src="/calabarmaccks.jpg"
+                     />
+            </div>
+            <div class="tile t-chefch">
+                <img src="/cutemorroco.jpg"
+                    />
+            </div>
+
+          
+
+
+           
+            <div class="tile t-waterfall">
+                <img src="/eygptianshistory.jpg"  />
+            </div>
+            <div class="tile t-elephant">
+                <img src="/cave.jpg"
+                   >
+            </div>
+
+           
+            <div class="tile t-ruins-b1">
+                <img src="/cutelandscape.png"
+                   >
+            </div>
+            <div class="tile t-ruins-b2">
+                <img src="/africavillage.jpg"
+                   >
+            </div>
+
+            
+            <div class="tile t-zebra">
+                <img src="/zebra.jpg">
+                    
+                <span class="overlay-50">50+</span>
+            </div>
+
+        </div>
+        
     </div>
 
-    there isbstill something here(the grid images) but it is not showing up in the screenshot, so i will ignore it for now, but if you want to see it, just let me know and i can show you the code for it
+  
 </section>
 <section class="testimonials-bg py-5">
     <div class="container text-center">
@@ -478,7 +731,7 @@
 
         <div class="px-3">
             <p class="testimonial-text mb-4">
-                "A life-changing experience! From the Serengeti to the 
+                "A life-changing experience! From the Serengeti to the
                 Maasai villages, everything was perfectly planned."
             </p>
         </div>
@@ -496,11 +749,12 @@
 <section class="contact-section py-5">
     <div class="container py-lg-5">
         <div class="row align-items-center g-5">
-            
+
             <div class="col-lg-6 d-none d-lg-block">
                 <div class="contact-image-wrapper">
                     <img src="/e8da5c0e1aa168e839920c08303cd10cff4ea40b (1).jpg" class="img-main shadow" alt="Hikers">
-                    <img src="/40ccf81900de195ca48a20e61da80ea467bfd147.jpg" class="img-overlay shadow" alt="Beach Scene">
+                    <img src="/40ccf81900de195ca48a20e61da80ea467bfd147.jpg" class="img-overlay shadow"
+                        alt="Beach Scene">
                 </div>
             </div>
 
@@ -520,10 +774,11 @@
                                 <label class="small fw-bold mb-1">Last name</label>
                                 <input type="text" class="form-control contact-input" placeholder="enter last name">
                             </div>
-                            
+
                             <div class="col-12">
                                 <label class="small fw-bold mb-1">email</label>
-                                <input type="email" class="form-control contact-input" placeholder="enter email address">
+                                <input type="email" class="form-control contact-input"
+                                    placeholder="enter email address">
                             </div>
 
                             <div class="col-12">
@@ -546,22 +801,50 @@
 <footer class="custom-footer py-5 border-top border-dark border-opacity-10" style="background-color: #f8faf9;">
     <div class="container py-4">
         <div class="row g-4">
-            
+
             <div class="col-12 col-md-6 col-lg-3">
                 <div class="d-flex align-items-center mb-3">
-                    <span class="text-warning me-2 fs-4"><img src="/d5cd34d356ab71c8ddfca2f66112da9a68bf2428.png" alt="" style="width: 40px; height: 40px;"></span>
+                    <span class="text-warning me-2 fs-4"><img src="/d5cd34d356ab71c8ddfca2f66112da9a68bf2428.png" alt=""
+                            style="width: 40px; height: 40px;"></span>
                     <h4 class="fw-bold mb-0">AfriVista</h4>
                 </div>
                 <p class="small mb-4 opacity-75">Your Gateway to Authentic African Adventures.</p>
                 <div class="social-icons">
-                    <a href="#"><i class="bi bi-facebook"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="#110707" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6.5 10v4h3v7h4v-7h3l1-4h-4V8c0-.545.455-1 1-1h3V3h-3c-2.723 0-5 2.277-5 5v2z"/></svg></i></a>
-                    <a href="#"><i class="bi bi-whatsapp"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#110707" d="M16.6 14c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1s-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5s.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4S9.7 8.5 9.5 8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3Q7 8.5 7 9.7c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2zm2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/></svg></i></a>
-                    <a href="#"><i class="bi bi-instagram"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="#110707" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="66" d="M16 3c2.76 0 5 2.24 5 5v8c0 2.76 -2.24 5 -5 5h-8c-2.76 0 -5 -2.24 -5 -5v-8c0 -2.76 2.24 -5 5 -5h4Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.6s" values="66;0"/></path><path stroke-dasharray="28" stroke-dashoffset="28" d="M12 8c2.21 0 4 1.79 4 4c0 2.21 -1.79 4 -4 4c-2.21 0 -4 -1.79 -4 -4c0 -2.21 1.79 -4 4 -4"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.7s" dur="0.6s" to="0"/></path></g><circle cx="17" cy="7" r="1.5" fill="#110707" opacity="0"><animate fill="freeze" attributeName="opacity" begin="1.3s" dur="0.2s" to="1"/></circle></svg></i></a>
+                    <a href="#"><i class="bi bi-facebook"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24">
+                                <path fill="none" stroke="#110707" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="1.5"
+                                    d="M6.5 10v4h3v7h4v-7h3l1-4h-4V8c0-.545.455-1 1-1h3V3h-3c-2.723 0-5 2.277-5 5v2z" />
+                            </svg></i></a>
+                    <a href="#"><i class="bi bi-whatsapp"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24">
+                                <path fill="#110707"
+                                    d="M16.6 14c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1s-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5s.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4S9.7 8.5 9.5 8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3Q7 8.5 7 9.7c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2zm2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4" />
+                            </svg></i></a>
+                    <a href="#"><i class="bi bi-instagram"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                height="24" viewBox="0 0 24 24">
+                                <g fill="none" stroke="#110707" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2">
+                                    <path stroke-dasharray="66"
+                                        d="M16 3c2.76 0 5 2.24 5 5v8c0 2.76 -2.24 5 -5 5h-8c-2.76 0 -5 -2.24 -5 -5v-8c0 -2.76 2.24 -5 5 -5h4Z">
+                                        <animate fill="freeze" attributeName="stroke-dashoffset" dur="0.6s"
+                                            values="66;0" />
+                                    </path>
+                                    <path stroke-dasharray="28" stroke-dashoffset="28"
+                                        d="M12 8c2.21 0 4 1.79 4 4c0 2.21 -1.79 4 -4 4c-2.21 0 -4 -1.79 -4 -4c0 -2.21 1.79 -4 4 -4">
+                                        <animate fill="freeze" attributeName="stroke-dashoffset" begin="0.7s" dur="0.6s"
+                                            to="0" />
+                                    </path>
+                                </g>
+                                <circle cx="17" cy="7" r="1.5" fill="#110707" opacity="0">
+                                    <animate fill="freeze" attributeName="opacity" begin="1.3s" dur="0.2s" to="1" />
+                                </circle>
+                            </svg></i></a>
                 </div>
             </div>
 
             <div class="col-12 col-md-6 col-lg-2">
-                
+
                 <h5 class="footer-title">Quick Links</h5>
                 <a href="#" class="footer-link">Home</a>
                 <a href="#" class="footer-link">About Us</a>
@@ -595,7 +878,8 @@
                 <h5 class="footer-title">Sign Up For Our Newsletter</h5>
                 <p class="small mb-3">Email Addresses</p>
                 <div class="input-group">
-                    <input type="email" class="form-control newsletter-input shadow-none" placeholder="Enter Email Addresses">
+                    <input type="email" class="form-control newsletter-input shadow-none"
+                        placeholder="Enter Email Addresses">
                     <button class="btn newsletter-btn" type="button">
                         <span class="fs-5">&rarr;</span>
                     </button>
@@ -606,11 +890,12 @@
     </div>
 </footer>
 
-   
+
 
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
+
 </html>
